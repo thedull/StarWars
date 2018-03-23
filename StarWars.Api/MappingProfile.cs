@@ -1,5 +1,8 @@
 ﻿using AutoMapper;
-using StarWars.Api.Models;
+using StarWars.Core.Models;
+using Character = StarWars.Api.Models.Character;
+using Droid = StarWars.Api.Models.Droid;
+using Human = StarWars.Api.Models.Human;
 
 namespace StarWars.Api
 {
@@ -22,6 +25,13 @@ namespace StarWars.Api
                 .ForMember(
                     dest => dest.HomePlanet,
                     opt => opt.MapFrom(src => src.HomePlanet.Name)
+                );
+            
+            CreateMap<Human, Core.Models.Human>(MemberList.Destination)
+                .IncludeBase<Character, Core.Models.Character>()
+                .ForMember(
+                    dest => dest.HomePlanet,
+                    opt => opt.UseValue((Planet) null)
                 );
         }
     }

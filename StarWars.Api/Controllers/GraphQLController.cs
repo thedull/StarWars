@@ -33,9 +33,11 @@ namespace StarWars.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
+            var inputs = query.Variables.ToInputs();
+            
             if (query == null) { throw new ArgumentNullException(nameof(query)); }
 
-            var executionOptions = new ExecutionOptions { Schema = _schema, Query = query.Query };
+            var executionOptions = new ExecutionOptions { Schema = _schema, Query = query.Query, Inputs = inputs};
 
             try
             {

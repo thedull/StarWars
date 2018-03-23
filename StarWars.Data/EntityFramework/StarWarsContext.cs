@@ -25,7 +25,7 @@ namespace StarWars.Data.EntityFramework
         {
             if (_migrations)
             {
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=StarWars;Integrated Security=SSPI;integrated security=true;MultipleActiveResultSets=True;");
+                optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=StarWars;User Id=sa;Password=P@55w0rd;MultipleActiveResultSets=True;");
             }
 
             base.OnConfiguring(optionsBuilder);

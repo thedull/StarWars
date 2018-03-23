@@ -6,8 +6,8 @@
     "start": "webpack --progress"
   },
   "dependencies": {
-    "graphiql": "^0.7.8",
-    "graphql": "^0.7.0",
+    "graphiql": "^0.11.2",
+    "graphql": "^0.10.0",
     "isomorphic-fetch": "^2.1.1",
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
@@ -21,5 +21,9 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.13.0"
   },
-  "-vs-binding": { "AfterBuild": [ "start" ] }
+  "-vs-binding": {
+    "AfterBuild": [
+      "start"
+    ]
+  }
 }

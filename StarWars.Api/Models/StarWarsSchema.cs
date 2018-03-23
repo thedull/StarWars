@@ -9,6 +9,8 @@ namespace StarWars.Api.Models
             : base(resolveType)
         {
             Query = (StarWarsQuery)resolveType(typeof(StarWarsQuery));
+            Mutation = (StarWarsMutation) resolveType(typeof(StarWarsMutation));
+            // RegisterType<HumanInputType>();
         }
     }
 }

@@ -8,6 +8,8 @@ namespace StarWars.Api.Models
 {
     public class HumanType : ObjectGraphType<Human>
     {
+        public HumanType() {}
+        
         public HumanType(ICharacterRepository characterRepository, IMapper mapper)
         {
             Name = "Human";

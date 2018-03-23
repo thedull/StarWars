@@ -40,6 +40,7 @@ namespace StarWars.Api
             services.AddAutoMapper(typeof(Startup));
 
             services.AddScoped<StarWarsQuery>();            
+            services.AddScoped<StarWarsMutation>();            
             services.AddTransient<ICharacterRepository, CharacterRepository>();
             services.AddTransient<IDroidRepository, DroidRepository>();
             services.AddTransient<IHumanRepository, HumanRepository>();
@@ -58,10 +59,11 @@ namespace StarWars.Api
             services.AddScoped<ITrilogyHeroes, TrilogyHeroes>();
             services.AddTransient<DroidType>();
             services.AddTransient<HumanType>();
+            services.AddTransient<HumanInputType>();
             services.AddTransient<CharacterInterface>();
             services.AddTransient<EpisodeEnum>();
             var sp = services.BuildServiceProvider();
-            services.AddScoped<ISchema>(_ => new StarWarsSchema(type => (GraphType) sp.GetService(type)) {Query = sp.GetService<StarWarsQuery>()});
+            services.AddScoped<ISchema>(_ => new StarWarsSchema(type => (GraphType) sp.GetService(type)) {Query = sp.GetService<StarWarsQuery>(), Mutation = sp.GetService<StarWarsMutation>()});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
